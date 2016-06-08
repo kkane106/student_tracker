@@ -6,6 +6,7 @@ router.get('/', studentCtrl.index);
 router.get('/:id', studentCtrl.show);
 router.post('/', studentCtrl.create);
 router.put('/:id', studentCtrl.update);
-router.delete('/:id', studentCtrl.destroy);
+// Don't want to delete student records
+// router.delete('/:id', studentCtrl.destroy);
 
 module.exports = router;
