@@ -16,6 +16,7 @@ angular.module('studentTracker')
 		};
 
 		var logout = function() {
+			console.log("IN LOGOUT Fx")
 			$window.localStorage.removeItem('student-token');
 		};
 
@@ -39,7 +40,8 @@ angular.module('studentTracker')
 
 				return {
 					email : payload.email,
-					name : payload.name
+					name : payload.username,
+					id : payload.id
 				};
 			}
 		};
@@ -47,6 +49,8 @@ angular.module('studentTracker')
 		return {
 			login : login,
 			logout : logout,
-			isLoggedIn : isLoggedIn
+			isLoggedIn : isLoggedIn,
+			currentUser : currentUser,
+			getToken : getToken
 		}
 	});

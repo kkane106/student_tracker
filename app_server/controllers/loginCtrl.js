@@ -27,7 +27,7 @@ var generateJwt = function(user) {
 	var expiry = new Date();
 	expiry.setDate(expiry.getDate() + 1);
 	return jwt.sign({
-		_id : user.user_id,
+		id : user.user_id,
 		email : user.email,
 		username : user._id,
 		exp : parseInt(expiry.getTime() / 1000)

@@ -1,14 +1,14 @@
 var express = require('express');
 var router = express.Router();
-var userRoutes = require('../controllers/userCtrl');
-// Configure JWT Security for API
+
 var secret = process.env.SECRET || require('../../.credentials').secret
 var jwt = require('jsonwebtoken');
-// var ejwt = require('express-jwt');
-// var auth = ejwt({
-//  secret : process.env.SECRET || require('../../.credentials').secret,
-//  userProperty : 'payload'
-// });
+
+var Mongo = require('mongodb').MongoClient;
+var dbURI = 'mongodb://localhost:27017/studentTracker';
+if (process.env.NODE_ENV == 'production') {
+  dbURI = process.env.DB_URI;
+}
 
 router.use(function(req,res,next){
   var token = req.headers['x-access-token'];
@@ -37,10 +37,14 @@ router.use(function(req,res,next){
   }
 });
 
-router.get('/', userRoutes.index);
-router.get('/:id', userRoutes.show);
-router.post('/', userRoutes.create);
-router.put('/:id', userRoutes.update);
-router.delete('/:id', userRoutes.destroy);
+router.get('/students', function(req,res,next){
+  Mongo.connect(dbURI, function(err,db){
+    var coll = db.collection('students');
+    coll.find({}).project({"name" : 1}).toArray(function(err,docs){
+      res.json(docs);
+    });
+
+  })
+})
 
 module.exports = router;

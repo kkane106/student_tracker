@@ -1,4 +1,8 @@
 angular.module('studentTracker')
 	.controller('homeController', function($scope){
-		$scope.message = 'Hello Angular';
+		var vm = this;
+		
+		vm.pageHeader = "Student Tracker";
+		vm.message = "Hello Angular";
+		vm.welcome = "Welcome Home...";
 	});

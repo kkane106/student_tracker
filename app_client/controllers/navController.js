@@ -1,15 +1,20 @@
 angular.module('studentTracker')
-	.controller('navController', function($scope, authentication){
-		$scope.query = "";
-		
-		$scope.search = function(query) {
-			console.log(query);
-		};
+  .controller('navController', function($scope,$location,authentication){
+    var vm = this;
 
-		$scope.loginStatus = authentication.isLoggedIn();
+    vm.currentPath = $location.path();
 
-		$scope.doLogout = function(){
-			authentication.logout();
-			$scope.loginStatus = false;
-		}
-	});
+    vm.isLoggedIn = authentication.isLoggedIn();
+
+    $scope.$watch(authentication.isLoggedIn, function(newVal, oldVal){
+    	vm.isLoggedIn = newVal;
+    });
+
+    vm.currentUser = authentication.currentUser();
+
+    vm.logout = function(){
+      authentication.logout();
+      vm.isLoggedIn = false;
+      $location.path('/login');
+    }
+  });

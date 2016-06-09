@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="studentTracker">
+	<head ng-controller="appController">
+		<!-- Required for pretty URLs -->
+		<base href="/">
+		<title>Student Tracker</title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+		<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+		<script src="js/jquery-1.12.4.min.js"></script>
+	  <script src="js/bootstrap.min.js"></script>
+	  <script src="ng/lib/angular.min.js"></script>
+		<script src="ng/lib/angular-route.min.js"></script>
+		<script src="ng/lib/angular-resource.min.js"></script>
+	  <script src="ng/ngApp.js"></script>
+	  <script src="ng/controllers/homeController.js"></script>
+	  <script src="ng/controllers/loginController.js"></script>
+	  <script src="ng/controllers/appController.js"></script>
+	  <script src="ng/controllers/navController.js"></script>
+	  <script src="ng/controllers/studentController.js"></script>
+	  <script src="ng/controllers/searchController.js"></script>
+		<script src="ng/services/authenticationService.js"></script>
+		<script src="ng/services/studentDataService.js"></script>
+		<script src="ng/directives/navigation/navigation.js"></script>
+		<script src="ng/directives/footerGeneric/footerGeneric.js"></script>
+		<script src="ng/directives/userNav/userNav.js"></script>
+		<style>
+			[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+		  	display: none !important;
+			}
+			footer-generic {
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body ng-cloak>
+		<navigation></navigation>
+		<div ng-view></div>
+		<footer-generic></footer-generic>
+	</body>
+</html>

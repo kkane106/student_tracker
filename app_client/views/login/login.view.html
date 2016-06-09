@@ -1,0 +1,27 @@
+<style>
+.input-group {
+	text-align: center;
+	width:100%;
+}
+
+.input-group .form-control {
+	margin-bottom: 0.5em;
+}
+</style>
+
+<div class="container" ng-controller="loginController">
+	<div class="row">
+		<div class="col-md-3"></div>
+		<div class="well col-md-6">
+			<form ng-submit="vm.onSubmit()">
+				<div role="alert" ng-show="vm.formError" class="alert alert-danger">{{vm.formError}}</div>
+				<div role="alert" ng-show="vm.accessError" class="alert alert-warning">{{vm.accessError}}</div>
+				<div class="input-group">
+					<input type="text" class="form-control" ng-model="vm.credentials._id" placeholder="Username">
+					<input type="password" class="form-control" ng-model="vm.credentials.password" placeholder="Password">
+					<button type="submit" class="btn btn-success" ng-click="doLogin(credentials)">Log In</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

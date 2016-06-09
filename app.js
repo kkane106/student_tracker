@@ -21,7 +21,7 @@ if (process.env.PORT) {
 
 // Set view engine to ejs
 app.set('views', './app_server/views');
-app.set('view engine', 'ejs');
+app.set('view engine', 'html');
 app.use('/ng', express.static('app_client'));
 app.use('/css', express.static('app_server/public/css'));
 app.use('/js', express.static('app_server/public/js'));
@@ -49,9 +49,15 @@ app.use(passportConfig.session());
 
 
 // Routes
-app.use('/students', require('./app_api/routes/studentRoutes'));
-app.use('/users', require('./app_api/routes/userRoutes'));
-app.use('/', require('./app_server/routes/applicationRoutes'));
+app.use('/api/students', require('./app_api/routes/studentRoutes'));
+app.use('/api/users', require('./app_api/routes/userRoutes'));
+app.use('/', require('./app_server/routes/loginRoutes'));
+app.use('/search', require('./app_server/routes/searchRoutes'));
+
+// catch all routing for ng SPA
+app.use(function(req,res){
+	res.sendfile('app_server/views/index.html');
+});
 
 // Error Handling
 app.use(function(req,res,next){
@@ -62,14 +68,15 @@ app.use(function(err,req,res,next){
 	if (err.name === 'UnauthorizedError') {
 		res.status(401);
 		res.json({"message" : err.name + ":" + err.message });
+	} else {
+		res.status(500);
+		res.send(err.message);
 	}
-	res.status(500);
-	res.send(err.message);
 });
-
 
 app.listen(port, function(){
 	console.log("Student App Listening on port: " + port);
+	// require('./config/mongo').insertSeedData();
 	// Ensure that the DB enforces unique user IDs and usernames (_id)
 	Mongo.connect(dbURI, function(err,db){
 		var coll = db.collection('users');
