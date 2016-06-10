@@ -37,10 +37,16 @@ router.use(function(req,res,next){
   }
 });
 
-router.get('/students', function(req,res,next){
+router.get('/students/:name', function(req,res,next){
+  console.log("in correct route");
   Mongo.connect(dbURI, function(err,db){
     var coll = db.collection('students');
-    coll.find({}).project({"name" : 1}).toArray(function(err,docs){
+    coll.find({
+      "name" : {
+        $regex : req.params.name, $options : "i"
+      }
+    }).project({"name" : 1}).toArray(function(err,docs){
+      console.log(docs);
       res.json(docs);
     });
 

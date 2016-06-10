@@ -11,7 +11,6 @@ angular.module('studentTracker')
                 }
               })
                 .then(function(data){
-                  console.log(data);
                 }, function(err){
                   if (err.status == 401) {
                       $location.path('/login').search({
@@ -22,16 +21,21 @@ angular.module('studentTracker')
                 
     };
 
-    var getStudentSearchDict = function(){
+    var getStudentSearchDict = function(val){
+      console.log("called function with " + val)
       return $http({
                 method : 'GET',
-                url : '/search/students',
+                url : '/search/students/'+val,
                 headers : {
                   'x-access-token' : authentication.getToken()
                 }
               })
                 .then(function(data){
-                  // console.log(data);
+                  // console.log(data.data);
+                  // return data.data;
+                  // var students = data.data.map(function(x){
+                    // return x.name;
+                  // })
                   return data.data;
                 }, function(err){
                   // console.error(err);

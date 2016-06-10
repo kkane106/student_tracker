@@ -25,6 +25,7 @@ app.set('view engine', 'html');
 app.use('/ng', express.static('app_client'));
 app.use('/css', express.static('app_server/public/css'));
 app.use('/js', express.static('app_server/public/js'));
+app.use('/fonts', express.static('app_server/public/fonts'));
 
 // Passport Dependencies
 var cookie = require('cookie-parser');

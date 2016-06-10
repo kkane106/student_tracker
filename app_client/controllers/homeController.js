@@ -1,5 +1,5 @@
 angular.module('studentTracker')
-	.controller('homeController', function($scope){
+	.controller('homeController', function($scope, authentication){
 		var vm = this;
 		
 		vm.pageHeader = "Student Tracker";

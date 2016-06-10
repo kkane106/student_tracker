@@ -1,10 +1,45 @@
 angular.module('studentTracker')
   .controller('searchController', function($scope, studentData){
     var vm = this;
-    
-    vm.dict = studentData.getStudentSearchDict();
 
-    vm.matchSearchInput = [];
+    var _selected;
+
+    $scope.selected = undefined;
+    
+    $scope.students = [];
+    // ["Ms. Dan Armstrong", "Randy Ziemann", "Antonina Toy", "Keegan Bernier", "Cole Ledner", "Mr. Kaelyn Runte", "Dario Hodkiewicz PhD", "Toy Kuphal", "Noemie Fadel", "Pietro Eichmann Sr.", "Rebeka Padberg", "Daisha Oberbrunner PhD", "Claudie Emard V", "Trevor Heidenreich", "Mr. Jamey Rath", "Sheila Weimann", "Daphne Bartoletti", "Jackeline Pollich", "Kari Fritsch", "Ronaldo Klocko"]
+
+    $scope.test = function(){
+      console.log(students);
+    }
+
+    $scope.getStudents = function(val) {
+      return studentData.getStudentSearchDict(val)
+      .then(function(res){
+        console.log(res);
+        return res;
+      });
+    };
+
+
+
+    $scope.ngModelOptionsSelected = function(value) {
+      if (arguments.length) {
+        _selected = value;
+      } else {
+        return _selected;
+      }
+    };
+
+    $scope.modelOptions = {
+      debounce: {
+        default: 500,
+        blur: 250
+      },
+      getterSetter: true
+    };
+
+    console.log(vm.students);
 
 // TEST that find function works : it does
     // dict.then(function(result){

@@ -2,9 +2,7 @@ angular.module('studentTracker')
 	.directive('navigation', function(){
 		return {
 			restrict : 'EA',
-			scope : { // define dynamic content here
-				// content : '=content'
-			},
+			scope : {},
 			templateUrl : '/ng/directives/navigation/navigation.template.html'
 		};
 	});

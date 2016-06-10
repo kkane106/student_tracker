@@ -1,4 +1,5 @@
-angular.module('studentTracker', ['ngRoute','ngResource']);
+angular.module('studentTracker', 
+	['ngRoute','ngResource','ui.bootstrap']);
 
 // configure route provider for SPA
 function config($routeProvider, $locationProvider) {
@@ -18,7 +19,7 @@ function config($routeProvider, $locationProvider) {
 		.when('/students', {
 			templateUrl : 'ng/views/students/index.view.html',
 			controller : 'studentController',
-			controllerAs : 'vm'
+			controllerAs : 'stuvm'
 		})
 		.otherwise({redirectTo: '/'});
 
@@ -30,4 +31,9 @@ function config($routeProvider, $locationProvider) {
 
 // add config to module
 angular.module('studentTracker')
-	.config(['$routeProvider', '$locationProvider', '$resourceProvider', config]);
+	.config([
+			'$routeProvider', 
+			'$locationProvider', 
+			'$resourceProvider', 
+			config
+		]);
