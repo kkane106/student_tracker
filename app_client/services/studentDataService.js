@@ -25,7 +25,7 @@ angular.module('studentTracker')
       console.log("called function with " + val)
       return $http({
                 method : 'GET',
-                url : '/search/students/'+val,
+                url : '/api/query/students/'+val,
                 headers : {
                   'x-access-token' : authentication.getToken()
                 }

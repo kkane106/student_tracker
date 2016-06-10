@@ -52,8 +52,8 @@ app.use(passportConfig.session());
 // Routes
 app.use('/api/students', require('./app_api/routes/studentRoutes'));
 app.use('/api/users', require('./app_api/routes/userRoutes'));
+app.use('/api/query', require('./app_api/routes/queryRoutes'));
 app.use('/', require('./app_server/routes/loginRoutes'));
-app.use('/search', require('./app_server/routes/searchRoutes'));
 
 // catch all routing for ng SPA
 app.use(function(req,res){
