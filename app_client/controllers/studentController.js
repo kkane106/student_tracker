@@ -7,7 +7,7 @@ angular.module('studentTracker')
 
     vm.students= [];
 
-    studentData.getStudents()
+    studentData.getStudentsForTable()
       .then(function(data){
         console.log(data);
         vm.students = data.data;
@@ -17,5 +17,18 @@ angular.module('studentTracker')
               error : 'Please login to use the site.'
             });
         }
+        if (err.status == 404) {
+          console.error("No students found");
+        }
       });
+
+      vm.styleHasPaid = function(bool) {
+        if (bool) {
+          return "background-color:#a1e0a9;"
+        }
+      }
+
+      vm.checkDate = function(date) {
+        return (date) ? true : false;
+      }
   });

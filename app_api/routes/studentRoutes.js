@@ -5,6 +5,7 @@ var jwtAuthenticator = require('../../config/jsonWebTokenAuthenticator');
 
 router.use(jwtAuthenticator);
 
+router.get('/active', studentCtrl.active)
 router.get('/', studentCtrl.index);
 router.get('/:id', studentCtrl.show);
 router.post('/', studentCtrl.create);

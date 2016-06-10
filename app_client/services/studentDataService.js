@@ -1,10 +1,10 @@
 angular.module('studentTracker')
   .service('studentData', function($http, $resource, $location, authentication){
 
-    var getStudents = function(){
+    var getStudentsForTable = function(){
       return  $http({
                 method : 'GET',
-                url : '/api/students',
+                url : '/api/students/active',
                 headers : {
                   'x-access-token' : authentication.getToken()
                 }
@@ -28,7 +28,7 @@ angular.module('studentTracker')
     };
 
     return {
-      getStudents : getStudents,
+      getStudentsForTable : getStudentsForTable,
       getStudentSearchDict : getStudentSearchDict
     }
   });

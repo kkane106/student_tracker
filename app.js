@@ -77,7 +77,7 @@ app.use(function(err,req,res,next){
 
 app.listen(port, function(){
 	console.log("Student App Listening on port: " + port);
-	require('./config/mongo').insertSeedData();
+	// require('./config/mongo').insertSeedData();
 	// Ensure that the DB enforces unique user IDs and usernames (_id)
 	Mongo.connect(dbURI, function(err,db){
 		var coll = db.collection('users');
