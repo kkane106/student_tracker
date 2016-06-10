@@ -1,18 +1,21 @@
 angular.module('studentTracker')
-  .controller('studentController', function(studentData, $location){
+  .controller('studentController', function($scope,studentData, $location){
 
     var vm = this;
 
     vm.dataError = ""
 
-    vm.students = studentData.getStudents();
+    vm.students= [];
 
-    if (vm.students.status < 400) {
-
-    } else {
-      if (vm.students.status == 401 && 
-          vm.students.message == "No token provided") {
-        $location.path('/login');
-      }
-    }
+    studentData.getStudents()
+      .then(function(data){
+        console.log(data);
+        vm.students = data.data;
+      }, function(err){
+        if (err.status == 401) {
+            $location.path('/login').search({
+              error : 'Please login to use the site.'
+            });
+        }
+      });
   });

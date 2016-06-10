@@ -1,2 +1,36 @@
 <h1>Students View</h1>
-
+<div class="container">
+  <div class="row">
+    <div class="col-md-2 list-group">
+      <a href="" class="list-group-item list-group-item-info disabled">
+        <strong>Cohorts</strong>
+      </a>
+      <button type="button" class="list-group-item">SD6</button>
+      <button type="button" class="list-group-item">SD7</button>
+      <button type="button" class="list-group-item">SD8</button>
+        
+    </div>
+    <div class="col-md-10">
+      <table class="table table-striped table-hover" >
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>SD</th>
+            <th>W/R</th>
+            <th>Exam</th>
+            <th>Interview</th>
+            <th>Logic</th>
+            <th>Offer</th>
+            <th>Accept</th>
+            <th>Deposit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="student in stuvm.students">
+            <td>{{student.name}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

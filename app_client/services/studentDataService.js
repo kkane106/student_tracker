@@ -8,16 +8,7 @@ angular.module('studentTracker')
                 headers : {
                   'x-access-token' : authentication.getToken()
                 }
-              })
-                .then(function(data){
-                }, function(err){
-                  if (err.status == 401) {
-                      $location.path('/login').search({
-                        error : 'Please login to use the site.'
-                      });
-                  }
-                });
-                
+              })                
     };
 
     var getStudentSearchDict = function(val){

@@ -1,6 +1,8 @@
 var faker = require('faker');
 var fs = require('fs');
-var Mongo = require('mongodb').MongoClient;
+var MongoDriver = require('mongodb');
+var Mongo = MongoDriver.MongoClient;
+var ObjectID = MongoDriver.ObjectID;
 
 module.exports.getNextSequence = function(name, db, callback) {
 	var collection = db.collection('userCounters');
@@ -30,31 +32,63 @@ module.exports.seedData = function() {
 			state : faker.address.stateAbbr(),
 			country : faker.address.country()
 		},
-		notes : [faker.lorem.sentence(), faker.lorem.sentence()],
+		notes : [{
+			date : faker.date.past(),
+			text : faker.lorem.sentence()
+		}, {
+			date : faker.date.past(),
+			text : faker.lorem.sentence()
+		}],
 		va : faker.random.boolean(),
 		source : faker.company.companyName(),
 		init_contact : faker.date.past(),
 		applications : [{
+			_id : new ObjectID(),
+			status : "active", // or "closed" or "accepted"
 			writing_resume : {
 				date : faker.date.past(),
 				is_ok : faker.random.boolean(),
-				notes : faker.lorem.paragraph()
+				notes : [{
+					date : faker.date.past(),
+					text : faker.lorem.sentence()
+				}, {
+					date : faker.date.past(),
+					text : faker.lorem.sentence()
+				}],
 			},
 			exam : {
 				date : faker.date.past(),
 				is_ok : faker.random.boolean(),
-				notes : faker.lorem.paragraph(),
+				notes : [{
+					date : faker.date.past(),
+					text : faker.lorem.sentence()
+				}, {
+					date : faker.date.past(),
+					text : faker.lorem.sentence()
+				}],
 				score : faker.random.number()
 			},
 			interview : {
 				date : faker.date.past(),
 				is_ok : faker.random.boolean(),
-				notes : faker.lorem.paragraph()
+				notes : [{
+					date : faker.date.past(),
+					text : faker.lorem.sentence()
+				}, {
+					date : faker.date.past(),
+					text : faker.lorem.sentence()
+				}],
 			},
 			logic : {
 				date : faker.date.past(),
 				is_ok : faker.random.boolean(),
-				notes : faker.lorem.paragraph()
+				notes : [{
+					date : faker.date.past(),
+					text : faker.lorem.sentence()
+				}, {
+					date : faker.date.past(),
+					text : faker.lorem.sentence()
+				}],
 			},
 			drop_out : faker.random.boolean(),
 			offer_date : faker.date.past(),
