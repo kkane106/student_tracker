@@ -1,6 +1,5 @@
 angular.module('studentTracker')
   .service('studentData', function($http, $resource, $location, authentication){
-    // var students = $resource('/students');
 
     var getStudents = function(){
       return  $http({
@@ -31,14 +30,9 @@ angular.module('studentTracker')
                 }
               })
                 .then(function(data){
-                  // console.log(data.data);
-                  // return data.data;
-                  // var students = data.data.map(function(x){
-                    // return x.name;
-                  // })
                   return data.data;
                 }, function(err){
-                  // console.error(err);
+                  // TODO: Handle Error
                 });
     };
 
