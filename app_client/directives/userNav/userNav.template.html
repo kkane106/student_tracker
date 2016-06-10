@@ -1,3 +1,14 @@
+<div ng-show="navvm.isLoggedIn">
+  <form class="navbar-form navbar-right" role="search" ng-controller="searchController">
+    <input type="text" placeholder="Search" ng-model="asyncSelected" uib-typeahead="student as student.name for student in getStudents($viewValue)" typeahead-loading="loadingStudents" typeahead-no-results="noResults" class="form-control" typeahead-on-select="onSelect($item,$model,$label)">
+    <div ng-show="loadingStudents">
+      <i class="fa fa-spinner" aria-hidden="true"></i>
+    </div>
+    <div ng-show="noResults">
+      <i class="fa fa-exclamation-circle" aria-hidden="true"></i> No Results Found
+    </div>
+  </form>
+</div>
 <ul class="nav navbar-nav navbar-right">
   <li ng-hide="navvm.isLoggedIn"><a href="/#login/?page={{navvm.currentPath">Sign In</a></li>
   <li ng-show="navvm.isLoggedIn" class="dropdown">

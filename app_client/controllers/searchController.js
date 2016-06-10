@@ -9,8 +9,9 @@ angular.module('studentTracker')
     $scope.students = [];
     // ["Ms. Dan Armstrong", "Randy Ziemann", "Antonina Toy", "Keegan Bernier", "Cole Ledner", "Mr. Kaelyn Runte", "Dario Hodkiewicz PhD", "Toy Kuphal", "Noemie Fadel", "Pietro Eichmann Sr.", "Rebeka Padberg", "Daisha Oberbrunner PhD", "Claudie Emard V", "Trevor Heidenreich", "Mr. Jamey Rath", "Sheila Weimann", "Daphne Bartoletti", "Jackeline Pollich", "Kari Fritsch", "Ronaldo Klocko"]
 
-    $scope.test = function(){
-      console.log(students);
+    $scope.onSelect = function($item, $model, $label){
+      // $item : full obj // $model : full obj // $label : just name
+      // $http
     }
 
     $scope.getStudents = function(val) {
