@@ -1,9 +1,11 @@
 {
   "name": "studentapp",
   "version": "1.0.0",
-  "description": "",
+  "description": "An application to assist our bootcamp in tracking students throught the application process, assisting our administrative endeavours.",
+  "repository" : "https://github.com/kkane106/student_tracker",
   "main": "app.js",
   "scripts": {
+    "start" : "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
