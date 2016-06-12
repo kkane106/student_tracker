@@ -1,7 +1,7 @@
 {
   "name": "studentapp",
   "version": "1.0.0",
-  "description": "An application to assist our bootcamp in tracking students throught the application process, assisting our administrative endeavours.",
+  "description": "An application to assist our bootcamp in tracking students thought the application process, assisting our administrative endeavours.",
   "repository" : "https://github.com/kkane106/student_tracker",
   "main": "app.js",
   "scripts": {
